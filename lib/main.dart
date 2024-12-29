@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:remote/controller/bloc/remote_bloc.dart';
 import 'package:remote/utils/theme.dart';
 import 'package:remote/view/splash/splash_screen.dart';
 
@@ -11,12 +13,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return BlocProvider(
+      create: (_) => RemoteBloc(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: Themes.lightModeTheme,
         darkTheme: Themes.darkModeTheme,
-      home: const SplashScreen(),
+        home: const SplashScreen(),
+      ),
     );
   }
 }
-
